@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIRA — เข้าสู่ระบบ</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body{ display:flex; align-items:center; justify-content:center; min-height:100vh; padding: 24px; }
+  .login-card{
+    width:100%; max-width: 420px; background: var(--surface); border:1px solid var(--line);
+    border-radius: var(--radius-l); box-shadow: var(--shadow-hover); padding: 36px 34px;
+  }
+  .login-head{ text-align:center; margin-bottom: 26px; }
+  .login-head .brand{ justify-content:center; margin-bottom:14px; }
+  .login-head h1{ font-size:1.3rem; font-weight:700; }
+  .login-head p{ font-size:.85rem; color:var(--ink-soft); margin-top:6px; }
+  .field{ margin-bottom:14px; position:relative; }
+  .field input{
+    width:100%; padding: 12px 14px 12px 40px; border-radius: 12px; border:1px solid var(--line);
+    font-family: var(--font-body); font-size:.9rem;
+  }
+  .field input:focus{ border-color: var(--teal); }
+  .field .fic{ position:absolute; left:13px; top:50%; transform:translateY(-50%); color: var(--ink-soft); }
+  .field-row{ display:flex; justify-content:flex-end; margin: -6px 0 18px; }
+  .field-row a{ font-size:.8rem; color: var(--teal); font-weight:600; }
+  .divider{ display:flex; align-items:center; gap:12px; margin: 20px 0; color: var(--ink-soft); font-size:.78rem; }
+  .divider::before, .divider::after{ content:''; flex:1; height:1px; background: var(--line); }
+  .oauth-row{ display:flex; gap:10px; }
+  .oauth-btn{
+    flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:11px; border-radius:12px;
+    border:1px solid var(--line); background:#fff; font-size:.85rem; font-weight:600; color: var(--ink);
+  }
+  .oauth-btn:hover{ border-color: var(--teal); }
+  .signup-line{ text-align:center; margin-top:22px; font-size:.85rem; color: var(--ink-soft); }
+  .signup-line a{ color: var(--teal); font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="login-card">
+  <div class="login-head">
+    <a href="index.html" class="brand"><span class="brand-mark"></span> AIRA</a>
+    <h1>เข้าสู่ระบบ</h1>
+    <p>ติดตามคุณภาพอากาศในพื้นที่โปรดของคุณแบบส่วนตัว</p>
+  </div>
+
+  <form onsubmit="event.preventDefault(); alert('เข้าสู่ระบบสำเร็จ (ตัวอย่างการสาธิต)');">
+    <div class="field">
+      <span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <input type="text" placeholder="อีเมลหรือชื่อผู้ใช้" required>
+    </div>
+    <div class="field">
+      <span class="fic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+      <input type="password" placeholder="รหัสผ่าน" required>
+    </div>
+    <div class="field-row"><a href="#">ลืมรหัสผ่าน?</a></div>
+    <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+  </form>
+
+  <div class="divider">หรือเข้าสู่ระบบด้วย</div>
+  <div class="oauth-row">
+    <button class="oauth-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="#1877F2"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.5 6 14.8 6H17V2.2C16.6 2.1 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4Z"/></svg> Facebook</button>
+    <button class="oauth-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.2-2.2H12v4h6.5c-.1 1.1-.9 2.8-2.6 3.9l4 3.1c2.4-2.2 3.6-5.4 3.6-8.8Z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-4-3.1c-1.1.7-2.5 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9l-4.1 3.2C3.3 21.4 7.3 24 12 24Z"/><path fill="#FBBC05" d="M5.4 14.3a7.2 7.2 0 0 1 0-4.6L1.3 6.5a12 12 0 0 0 0 11l4.1-3.2Z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.4.6 4.6 1.8l3.5-3.4C18 1.2 15.2 0 12 0 7.3 0 3.3 2.6 1.3 6.5l4.1 3.2C6.3 6.9 8.9 4.8 12 4.8Z"/></svg> Google
+    </button>
+  </div>
+
+  <p class="signup-line">ยังไม่มีบัญชี? <a href="#">สมัครสมาชิกที่นี่</a></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

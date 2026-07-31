@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIRA — พยากรณ์คุณภาพอากาศ</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .guide-row{ display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px dashed var(--line); font-size:.88rem; }
+  .guide-row:last-child{ border-bottom:none; }
+  .guide-tag{ font-weight:700; font-size:.72rem; padding:4px 10px; border-radius:999px; flex:none; width: 88px; text-align:center; }
+  .day-card{ text-align:center; padding: 16px 8px; }
+  .day-card .d{ font-weight:700; font-size:.85rem; }
+  .day-card .aqi{ font-family: var(--font-display); font-weight:800; font-size:1.4rem; margin: 8px 0 4px; }
+  .day-card .lv{ font-size:.72rem; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span> AIRA</a>
+    <nav class="nav-links">
+      <a href="index.html">แดชบอร์ด</a>
+      <a href="map.html">แผนที่</a>
+      <a href="forecast.html" class="active">พยากรณ์</a>
+      <a href="weather.html">สภาพอากาศ</a>
+      <a href="knowledge.html">ความรู้ PM2.5</a>
+      <a href="news.html">ข่าวสาร</a>
+      <a href="contact.html">ติดต่อเรา</a>
+    </nav>
+    <div class="nav-right">
+      <a href="login.html" class="location-pill">เข้าสู่ระบบ</a>
+      <button class="menu-btn" aria-label="เมนู"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="page-head">
+    <span class="eyebrow">กรุงเทพมหานคร</span>
+    <h1>พยากรณ์คุณภาพอากาศ</h1>
+    <p class="sub">คาดการณ์ค่า AQI ล่วงหน้ารายชั่วโมงและรายวัน พร้อมคำแนะนำการทำกิจกรรมกลางแจ้ง</p>
+  </div>
+
+  <div class="grid g-2">
+    <div class="card">
+      <div class="card-title">พยากรณ์รายชั่วโมง (Hourly Forecast)</div>
+      <table>
+        <thead><tr><th>ชั่วโมง</th><th>สภาพอากาศ</th><th>ค่า AQI</th><th>สถานะ</th></tr></thead>
+        <tbody id="hourlyBody"></tbody>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div class="card">
+        <div class="card-title">แนวโน้มคุณภาพอากาศวันนี้</div>
+        <div class="chart-wrap" id="hourlyChart"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">คำแนะนำการทำกิจกรรมกลางแจ้ง</div>
+        <div class="guide-row"><span class="guide-tag" style="background:var(--teal-tint);color:var(--teal);">ดี</span> ทำกิจกรรมกลางแจ้งได้ตามปกติ</div>
+        <div class="guide-row"><span class="guide-tag" style="background:#FFF6D9;color:#8A6D00;">ปานกลาง</span> กลุ่มเสี่ยงควรระมัดระวัง</div>
+        <div class="guide-row"><span class="guide-tag" style="background:var(--coral-tint);color:var(--coral);">ไม่ดี</span> สวมหน้ากากอนามัยเมื่ออกนอกอาคาร</div>
+        <div class="guide-row"><span class="guide-tag" style="background:#F1E2F5;color:#7A2E9E;">แย่มาก</span> หลีกเลี่ยงกิจกรรมกลางแจ้งทุกชนิด</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><h2>พยากรณ์รายวัน (7 วันข้างหน้า)</h2></div>
+  <div class="grid" style="grid-template-columns:repeat(7,1fr);" id="dailyGrid"></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 AIRA — ระบบติดตามคุณภาพอากาศประเทศไทย</span>
+    <div class="footer-links"><a href="knowledge.html">เกี่ยวกับ AQI</a><a href="contact.html">ติดต่อเรา</a></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const hourly = [
+    {h:'06:00', aqi:45, w:'สดใส'}, {h:'07:00', aqi:65, w:'มีเมฆ'}, {h:'08:00', aqi:70, w:'มีเมฆ'},
+    {h:'10:00', aqi:70, w:'มีเมฆ'}, {h:'12:00', aqi:85, w:'มีเมฆ'}, {h:'13:00', aqi:45, w:'สดใส'},
+    {h:'14:00', aqi:65, w:'สดใส'}, {h:'16:00', aqi:65, w:'สดใส'}, {h:'17:00', aqi:110, w:'มีเมฆ'},
+    {h:'18:00', aqi:155, w:'มีเมฆ'}, {h:'20:00', aqi:95, w:'มีเมฆ'}, {h:'21:00', aqi:110, w:'มีเมฆ'},
+    {h:'22:00', aqi:75, w:'สดใส'}, {h:'24:00', aqi:50, w:'มีเมฆ'},
+  ];
+  const body = document.getElementById('hourlyBody');
+  hourly.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="mono">${row.h}</td><td>${row.w}</td>
+      <td><span class="aqi-pill" style="color:${aqiColor(row.aqi)};"><i class="aqi-dot" style="background:${aqiColor(row.aqi)}"></i>${row.aqi}</span></td>
+      <td style="font-size:.8rem;color:var(--ink-soft);">${aqiLabelTH(row.aqi)}</td>`;
+    body.appendChild(tr);
+  });
+
+  drawTrendChart(document.getElementById('hourlyChart'),
+    hourly.map(r => ({x:r.h, y:r.aqi})), {max:180, height:190});
+
+  const daily = [
+    {d:'จันทร์', aqi:45},{d:'อังคาร', aqi:65},{d:'พุธ', aqi:110},
+    {d:'พฤหัส', aqi:155},{d:'ศุกร์', aqi:95},{d:'เสาร์', aqi:50},{d:'อาทิตย์', aqi:40},
+  ];
+  const dGrid = document.getElementById('dailyGrid');
+  daily.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'card day-card';
+    card.innerHTML = `<div class="d">${d.d}</div>
+      <div class="aqi" style="color:${aqiColor(d.aqi)};">${d.aqi}</div>
+      <div class="lv">${aqiLabelTH(d.aqi)}</div>`;
+    dGrid.appendChild(card);
+  });
+</script>
+</body>
+</html>

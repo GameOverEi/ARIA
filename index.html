@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIRA — แดชบอร์ดคุณภาพอากาศ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span> AIRA <span style="color:var(--ink-soft);font-weight:400;font-size:.8rem;">คุณภาพอากาศ</span></a>
+    <nav class="nav-links">
+      <a href="index.html" class="active">แดชบอร์ด</a>
+      <a href="map.html">แผนที่</a>
+      <a href="forecast.html">พยากรณ์</a>
+      <a href="weather.html">สภาพอากาศ</a>
+      <a href="knowledge.html">ความรู้ PM2.5</a>
+      <a href="news.html">ข่าวสาร</a>
+      <a href="contact.html">ติดต่อเรา</a>
+    </nav>
+    <div class="nav-right">
+      <a href="login.html" class="location-pill" style="cursor:pointer;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        เข้าสู่ระบบ
+      </a>
+      <button class="menu-btn" aria-label="เมนู">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="page-head">
+    <span class="eyebrow">● อัปเดตล่าสุด 08:42 น.</span>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <div>
+        <h1>สถานะคุณภาพอากาศวันนี้</h1>
+        <p class="sub">ติดตามค่า AQI, PM2.5 และคำแนะนำด้านสุขภาพแบบเรียลไทม์ สำหรับ กรุงเทพมหานคร และพื้นที่ใกล้เคียง</p>
+      </div>
+      <div class="location-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        กรุงเทพมหานคร, TH
+      </div>
+    </div>
+  </div>
+
+  <div class="grid g-3">
+
+    <!-- Column 1 -->
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div class="card">
+        <div class="card-title"><span class="num">1</span>ค่า AQI ปัจจุบัน</div>
+        <div class="aqi-hero">
+          <div>
+            <div class="aqi-number">150</div>
+            <span class="aqi-badge" style="background:var(--coral-tint);color:var(--coral);">ไม่ดีต่อสุขภาพ</span>
+          </div>
+          <div class="ring-wrap" data-gauge="150" data-max="300">
+            <svg viewBox="0 0 120 120" width="118" height="118">
+              <circle class="ring-bg" cx="60" cy="60" r="50"/>
+              <circle class="ring-fg" cx="60" cy="60" r="50"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr;">
+        <div class="card">
+          <div class="card-title"><span class="num">2</span>ระดับคุณภาพอากาศ</div>
+          <div class="stat-box">
+            <div class="value" style="color:var(--coral);">ไม่ดีต่อสุขภาพ</div>
+            <div class="label">ระดับ 4 / 6</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="num">3</span>ค่า PM2.5</div>
+          <div class="stat-box">
+            <div class="value">65 <small>µg/m³</small></div>
+            <div class="label">เกินมาตรฐาน 1.3 เท่า</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="num">4</span>คำอธิบายคุณภาพอากาศ</div>
+        <p style="font-size:.92rem;line-height:1.7;color:var(--ink-soft);">
+          หมอกควันปกคลุมพื้นที่ตอนเช้า ความเข้มข้นฝุ่น PM2.5 สูงกว่าค่ามาตรฐานองค์การอนามัยโลก แนะนำให้ประชาชนกลุ่มเสี่ยงจำกัดกิจกรรมกลางแจ้ง และสวมหน้ากากอนามัยเมื่อออกนอกอาคาร
+        </p>
+      </div>
+    </div>
+
+    <!-- Column 2 -->
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div class="card">
+        <div class="card-title"><span class="num">5</span>คำแนะนำด้านสุขภาพ</div>
+        <p style="font-size:.8rem;font-weight:600;color:var(--ink-soft);margin-bottom:12px;">สำหรับประชาชนทั่วไป</p>
+        <div class="advisory">
+          <div class="ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.5 4-7 8-7s8 2.5 8 7"/></svg>
+          </div>
+          <p>หลีกเลี่ยงการทำกิจกรรมหนักกลางแจ้งเป็นเวลานาน</p>
+        </div>
+        <div class="advisory">
+          <div class="ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 6h16M4 18h10"/></svg>
+          </div>
+          <p>ปิดหน้าต่างและใช้เครื่องฟอกอากาศภายในบ้าน</p>
+        </div>
+
+        <p style="font-size:.8rem;font-weight:600;color:var(--ink-soft);margin:18px 0 12px;">สำหรับกลุ่มเสี่ยง (เด็ก ผู้สูงอายุ ผู้ป่วยโรคปอด)</p>
+        <div class="advisory">
+          <div class="ic warn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 2.7 18a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          </div>
+          <p>ควรอยู่ในอาคาร และใช้เครื่องฟอกอากาศตลอดเวลา</p>
+        </div>
+        <div class="advisory">
+          <div class="ic warn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+          </div>
+          <p>หากจำเป็นต้องออกนอกอาคาร ให้สวมหน้ากาก N95</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="num">6</span>แชร์ข้อมูลคุณภาพอากาศ</div>
+        <p style="font-size:.85rem;color:var(--ink-soft);margin-bottom:14px;">แชร์สถานะอากาศวันนี้ให้คนที่คุณห่วงใย</p>
+        <button class="btn btn-primary btn-block">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 7l4-4 4 4M4 21h16"/></svg>
+          แชร์ผลตรวจวัด
+        </button>
+      </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="card">
+      <div class="card-title"><span class="num">7</span>แนวโน้มคุณภาพอากาศ (7 วันย้อนหลัง)</div>
+      <div class="chart-wrap" id="trendChart"></div>
+      <div class="aqi-legend" style="margin-top:16px;">
+        <span><i class="dot" style="background:var(--aqi-good);"></i>ดี</span>
+        <span><i class="dot" style="background:var(--aqi-moderate);"></i>ปานกลาง</span>
+        <span><i class="dot" style="background:var(--aqi-sensitive);"></i>กลุ่มเสี่ยง</span>
+        <span><i class="dot" style="background:var(--aqi-unhealthy);"></i>ไม่ดี</span>
+        <span><i class="dot" style="background:var(--aqi-verybad);"></i>แย่มาก</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-title"><h2>สถานีตรวจวัดใกล้เคียง</h2></div>
+  <div class="grid g-3">
+    <div class="card">
+      <div class="card-title">เชียงใหม่</div>
+      <div class="stat-box"><div class="value" style="color:var(--coral);">155</div><div class="label">ไม่ดีต่อสุขภาพ</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">กรุงเทพฯ</div>
+      <div class="stat-box"><div class="value" style="color:#B08900;">88</div><div class="label">ปานกลาง</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">ชลบุรี</div>
+      <div class="stat-box"><div class="value" style="color:var(--teal);">35</div><div class="label">ดี</div></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 AIRA — ระบบติดตามคุณภาพอากาศประเทศไทย</span>
+    <div class="footer-links">
+      <a href="knowledge.html">เกี่ยวกับ AQI</a>
+      <a href="contact.html">ติดต่อเรา</a>
+      <a href="news.html">ข่าวสาร</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  drawTrendChart(document.getElementById('trendChart'), [
+    {x:'วันที่ 1', y:45},{x:'วันที่ 2', y:85},{x:'วันที่ 3', y:60},
+    {x:'วันที่ 4', y:110},{x:'วันที่ 5', y:205},{x:'วันที่ 6', y:150},{x:'วันที่ 7', y:118},
+  ], {max:220, height:210});
+</script>
+</body>
+</html>

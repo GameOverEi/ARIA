@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIRA — ข่าวสาร</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .news-toolbar{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom: 26px; }
+  .search-input2{
+    flex:1; min-width:220px; padding: 11px 14px 11px 38px; border-radius: 12px; border:1px solid var(--line);
+    background: var(--surface) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%234C625B" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>') no-repeat 12px center;
+    font-family: var(--font-body); font-size:.9rem;
+  }
+  .chip{ padding:8px 15px; border-radius:999px; border:1px solid var(--line); background:#fff; font-size:.82rem; font-weight:500; color: var(--ink-soft); white-space:nowrap; }
+  .chip.active{ background: var(--teal); border-color: var(--teal); color:#fff; }
+  .news-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .news-grid{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .news-grid{ grid-template-columns:1fr;} }
+  .news-card{ overflow:hidden; padding:0; display:flex; flex-direction:column; }
+  .news-thumb{ height:150px; background: linear-gradient(135deg,var(--teal-tint),var(--surface-soft)); display:flex; align-items:center; justify-content:center; color:var(--teal); }
+  .news-body{ padding: 18px 20px 20px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .news-meta{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:.68rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; }
+  .news-tag{ background: var(--coral-tint); color: var(--coral); padding:2px 8px; border-radius:6px; }
+  .news-body h3{ font-size:1rem; line-height:1.5; font-weight:700; }
+  .news-body p{ font-size:.85rem; color:var(--ink-soft); line-height:1.6; flex:1; }
+  .read-more{ font-size:.82rem; font-weight:600; color:var(--teal); display:inline-flex; align-items:center; gap:4px; margin-top:auto; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span> AIRA</a>
+    <nav class="nav-links">
+      <a href="index.html">แดชบอร์ด</a>
+      <a href="map.html">แผนที่</a>
+      <a href="forecast.html">พยากรณ์</a>
+      <a href="weather.html">สภาพอากาศ</a>
+      <a href="knowledge.html">ความรู้ PM2.5</a>
+      <a href="news.html" class="active">ข่าวสาร</a>
+      <a href="contact.html">ติดต่อเรา</a>
+    </nav>
+    <div class="nav-right">
+      <a href="login.html" class="location-pill">เข้าสู่ระบบ</a>
+      <button class="menu-btn" aria-label="เมนู"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="page-head">
+    <span class="eyebrow">ข่าวสาร & บทความ</span>
+    <h1>ข่าวล่าสุดเรื่องคุณภาพอากาศ</h1>
+    <p class="sub">ติดตามข่าวสาร งานวิจัย และมาตรการรับมือฝุ่นควัน PM2.5 ทั่วประเทศไทย</p>
+  </div>
+
+  <div class="news-toolbar">
+    <input class="search-input2" placeholder="ค้นหาข่าวที่นี่...">
+    <span class="chip active">ทุกหมวดหมู่</span>
+    <span class="chip">การเมือง</span>
+    <span class="chip">เศรษฐกิจ</span>
+    <span class="chip">เทคโนโลยี</span>
+    <span class="chip">สุขภาพ</span>
+  </div>
+
+  <div class="news-grid" id="newsGrid"></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 AIRA — ระบบติดตามคุณภาพอากาศประเทศไทย</span>
+    <div class="footer-links"><a href="knowledge.html">เกี่ยวกับ AQI</a><a href="contact.html">ติดต่อเรา</a></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const items = [
+    {tag:'สุขภาพ', date:'20 ก.ค. 2569', title:'PM2.5 พุ่งสูงในภาคเหนือ กรมอนามัยแนะประชาชนงดกิจกรรมกลางแจ้ง', desc:'สถานการณ์ฝุ่นควันในพื้นที่ภาคเหนือทวีความรุนแรงต่อเนื่อง เจ้าหน้าที่เร่งแจกจ่ายหน้ากากอนามัย...'},
+    {tag:'เทคโนโลยี', date:'20 ก.ค. 2569', title:'เปิดตัวเซนเซอร์วัดฝุ่นรุ่นใหม่ แม่นยำขึ้น อัปเดตทุก 1 นาที', desc:'เครือข่ายสถานีตรวจวัดคุณภาพอากาศเพิ่มความละเอียดของข้อมูล ช่วยให้ประชาชนวางแผนกิจกรรมได้ดีขึ้น...'},
+    {tag:'เศรษฐกิจ', date:'20 ก.ค. 2569', title:'ยอดขายเครื่องฟอกอากาศพุ่ง 40% ในช่วงฤดูฝุ่น', desc:'ผู้ประกอบการเครื่องใช้ไฟฟ้าเผยยอดขายเครื่องฟอกอากาศเติบโตต่อเนื่อง หลังประชาชนตื่นตัวเรื่องสุขภาพ...'},
+    {tag:'การเมือง', date:'19 ก.ค. 2569', title:'ครม. เห็นชอบมาตรการรับมือฝุ่นควันข้ามพรมแดนปี 2569', desc:'คณะรัฐมนตรีอนุมัติงบประมาณเพิ่มเติมสำหรับการเฝ้าระวังและควบคุมการเผาในพื้นที่เกษตร...'},
+    {tag:'สุขภาพ', date:'19 ก.ค. 2569', title:'งานวิจัยชี้ฝุ่น PM2.5 ส่งผลกระทบต่อพัฒนาการสมองเด็ก', desc:'ทีมนักวิจัยจากมหาวิทยาลัยชั้นนำเผยผลการศึกษาผลกระทบระยะยาวของฝุ่นละอองต่อเด็กเล็ก...'},
+    {tag:'เทคโนโลยี', date:'18 ก.ค. 2569', title:'แอปพลิเคชันติดตามคุณภาพอากาศยอดดาวน์โหลดทะลุ 1 ล้านครั้ง', desc:'แอปพลิเคชันตรวจวัดคุณภาพอากาศได้รับความนิยมเพิ่มขึ้นต่อเนื่อง สะท้อนความตระหนักรู้ของประชาชน...'},
+  ];
+  const grid = document.getElementById('newsGrid');
+  items.forEach((n,i) => {
+    const card = document.createElement('div');
+    card.className = 'card news-card';
+    card.innerHTML = `
+      <div class="news-thumb">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 13h8M8 16h5"/></svg>
+      </div>
+      <div class="news-body">
+        <div class="news-meta"><span>${n.date}</span><span class="news-tag">${n.tag}</span></div>
+        <h3>${n.title}</h3>
+        <p>${n.desc}</p>
+        <a href="#" class="read-more">อ่านต่อ →</a>
+      </div>`;
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>

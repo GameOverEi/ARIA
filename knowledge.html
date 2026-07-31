@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIRA — ศูนย์ความรู้เรื่อง PM2.5</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .hero{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center;
+    padding: 48px 0 20px;
+  }
+  @media (max-width:860px){ .hero{ grid-template-columns:1fr; } }
+  .hero h1{ font-size: clamp(1.8rem,3.4vw,2.6rem); line-height:1.25; }
+  .hero .sub{ margin-top:14px; font-size:1rem; color:var(--ink-soft); max-width:480px; }
+  .particle-diagram{
+    position:relative; height:280px; background: var(--surface); border:1px solid var(--line);
+    border-radius: var(--radius-l); box-shadow: var(--shadow-card); display:flex; align-items:center; justify-content:center;
+  }
+  .topic-card{ display:flex; flex-direction:column; gap:12px; }
+  .topic-card .ic-wrap{
+    width:46px; height:46px; border-radius: var(--radius-s); background: var(--teal-tint); color: var(--teal);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .topic-card h3{ font-size:1rem; font-weight:700; }
+  .topic-card p{ font-size:.85rem; color:var(--ink-soft); }
+  .mask-row{ display:flex; gap:14px; margin-top:10px; flex-wrap:wrap; }
+  .mask-item{ flex:1; min-width:110px; text-align:center; padding:14px 8px; border-radius: var(--radius-s); background: var(--surface-soft); }
+  .mask-item .stars{ font-size:.72rem; color:var(--ink-soft); margin-top:4px; }
+  .mask-item.good{ background: var(--teal-tint); }
+  .mask-item.bad{ background: var(--coral-tint); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span> AIRA</a>
+    <nav class="nav-links">
+      <a href="index.html">แดชบอร์ด</a>
+      <a href="map.html">แผนที่</a>
+      <a href="forecast.html">พยากรณ์</a>
+      <a href="weather.html">สภาพอากาศ</a>
+      <a href="knowledge.html" class="active">ความรู้ PM2.5</a>
+      <a href="news.html">ข่าวสาร</a>
+      <a href="contact.html">ติดต่อเรา</a>
+    </nav>
+    <div class="nav-right">
+      <a href="login.html" class="location-pill">เข้าสู่ระบบ</a>
+      <button class="menu-btn" aria-label="เมนู"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="hero">
+    <div>
+      <span class="eyebrow">ศูนย์ความรู้เรื่องฝุ่น PM2.5</span>
+      <h1>เรียนรู้และป้องกันตัวเองจากฝุ่น PM2.5</h1>
+      <p class="sub">ข้อมูลครบวงจรเกี่ยวกับค่า AQI ฝุ่นละอองขนาดเล็ก ผลกระทบต่อสุขภาพ และวิธีป้องกันตัวเอง เพื่อสุขภาพที่ดีของคุณและครอบครัว</p>
+      <a href="#topics" class="btn btn-primary" style="margin-top:22px;">เริ่มเรียนรู้</a>
+    </div>
+    <div class="particle-diagram">
+      <svg width="220" height="220" viewBox="0 0 220 220">
+        <circle cx="110" cy="110" r="90" fill="none" stroke="var(--line)" stroke-dasharray="3 5"/>
+        <text x="110" y="30" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">เส้นผมมนุษย์ ~70 µm</text>
+        <circle cx="110" cy="110" r="70" fill="none" stroke="#C9D6D1" stroke-width="1.4"/>
+        <text x="110" y="150" text-anchor="middle" class="mono" font-size="9" fill="var(--ink-soft)">PM10</text>
+        <circle cx="110" cy="110" r="40" fill="none" stroke="var(--aqi-sensitive)" stroke-width="1.8"/>
+        <circle cx="110" cy="110" r="14" fill="var(--coral)" opacity=".85"/>
+        <text x="110" y="115" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">PM2.5</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="section-title" id="topics"><h2>หัวข้อความรู้</h2></div>
+  <div class="grid g-3">
+    <div class="card topic-card">
+      <div class="ic-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+      <h3>ค่า AQI คืออะไร</h3>
+      <p>ทำความเข้าใจความหมายของดัชนีคุณภาพอากาศ และเกณฑ์การแบ่งระดับทั้ง 6 ระดับ</p>
+      <a href="#" style="font-size:.82rem;font-weight:600;color:var(--teal);">อ่านเพิ่มเติม →</a>
+    </div>
+    <div class="card topic-card">
+      <div class="ic-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg></div>
+      <h3>เข้าใจ PM2.5</h3>
+      <p>ขนาดของฝุ่นละอองเทียบกับเส้นผมมนุษย์ และแหล่งที่มาหลักของฝุ่นในประเทศไทย</p>
+      <a href="#" style="font-size:.82rem;font-weight:600;color:var(--teal);">อ่านเพิ่มเติม →</a>
+    </div>
+    <div class="card topic-card">
+      <div class="ic-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4a4 4 0 0 1 4 4c0 3-4 5-4 5s-4-2-4-5a4 4 0 0 1 4-4Z"/><path d="M6 20c0-3 3-5 6-5s6 2 6 5"/></svg></div>
+      <h3>ผลกระทบต่อสุขภาพ</h3>
+      <p>ผลกระทบระยะสั้นต่อระบบหายใจ และผลกระทบระยะยาวต่อหัวใจและหลอดเลือด</p>
+      <a href="#" style="font-size:.82rem;font-weight:600;color:var(--teal);">อ่านเพิ่มเติม →</a>
+    </div>
+  </div>
+
+  <div class="grid g-2" style="margin-top:20px;">
+    <div class="card topic-card">
+      <div class="ic-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+      <h3>วิธีป้องกันฝุ่น PM2.5</h3>
+      <p>แนวปฏิบัติประจำวัน — จากการเลือกเวลาออกกำลังกาย ไปจนถึงการเลือกเครื่องฟอกอากาศในบ้าน</p>
+      <ul style="margin:6px 0 0;padding-left:18px;font-size:.85rem;color:var(--ink-soft);line-height:1.9;">
+        <li>ตรวจเช็คค่า AQI ก่อนออกจากบ้านทุกครั้ง</li>
+        <li>ปิดหน้าต่างช่วงที่ค่าฝุ่นสูง และใช้เครื่องฟอกอากาศ</li>
+        <li>เปลี่ยนแผ่นกรองอากาศตามรอบที่กำหนด</li>
+      </ul>
+    </div>
+    <div class="card topic-card">
+      <div class="ic-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13a8 8 0 0 1 16 0v3H4v-3Z"/><path d="M2 20h20"/></svg></div>
+      <h3>วิธีเลือกหน้ากาก</h3>
+      <p>มาตรฐานและประสิทธิภาพการกรองฝุ่นของหน้ากากแต่ละประเภท</p>
+      <div class="mask-row">
+        <div class="mask-item good"><div>N95</div><div class="stars">★★★★★</div></div>
+        <div class="mask-item bad"><div>หน้ากากอนามัย</div><div class="stars">★★☆☆☆</div></div>
+        <div class="mask-item bad"><div>หน้ากากผ้า</div><div class="stars">★☆☆☆☆</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><h2>บทความแนะนำ</h2></div>
+  <div class="grid g-3">
+    <div class="card"><div class="card-title">งานวิจัย</div><p style="font-size:.9rem;line-height:1.6;">ผลกระทบของฝุ่น PM2.5 ต่อพัฒนาการทางสมองในเด็ก</p><a href="news.html" class="btn btn-outline" style="margin-top:14px;">อ่านต่อ</a></div>
+    <div class="card"><div class="card-title">ข่าวสาร</div><p style="font-size:.9rem;line-height:1.6;">มาตรการรัฐบาลรับมือฝุ่นควันข้ามพรมแดนปี 2569</p><a href="news.html" class="btn btn-outline" style="margin-top:14px;">อ่านต่อ</a></div>
+    <div class="card"><div class="card-title">คู่มือ</div><p style="font-size:.9rem;line-height:1.6;">เลือกเครื่องฟอกอากาศให้เหมาะกับขนาดห้องอย่างไร</p><a href="news.html" class="btn btn-outline" style="margin-top:14px;">อ่านต่อ</a></div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 AIRA — ระบบติดตามคุณภาพอากาศประเทศไทย</span>
+    <div class="footer-links"><a href="index.html">แดชบอร์ด</a><a href="contact.html">ติดต่อเรา</a></div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
